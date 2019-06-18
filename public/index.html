@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>ビーグル</title>
+	<link rel="icon" href="/images/beagle.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/images/beagle.ico" type="image/x-icon" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.min.css" rel="stylesheet">
+	<style type="text/css">
+span{font-weight: 700;color:green;font-size:13px;}
+.dhl{list-style: none;padding:0;} .hpl{list-style: decimal;} .hpl li{line-height: 200%;} .state{list-style: none;padding:0;margin-left:-50px;} .state li{display:inline-block; margin-right:6px;}
+.head{background-color:#dedeff;text-align: center;margin-bottom:10px;}
+.ct{text-align: center;}	.swt{margin:16px 0 50px 0;}
+.swt>input{margin:0 50px 0 0;}		.wd{margin:-100px 0 0 -40px;}
+.az{margin:0 10px 0 -50px;}		.lt {margin:0 30px 0 -30px;}
+.sld .ui-slider-range{background-color:#22EE22;}
+#log{border:1px solid #ccc;display:block;width:100%;min-height:130px;max-height:500px;}
+.tag{font-weight:700;line-height:120%;margin-top:15px;color:blue;} .tooltip {min-width: 250px;max-width: 500px;}
+#hLabel{text-indent:1em;color:blue;}
+.chatArea {height: 100%;border: 1px solid #ccc;}
+.messages {  height: 100%;  margin: 0;  overflow-y: scroll;  padding: 0;}
+.message.typing .messageBody {  color: gray;}
+.username {  font-weight: 700;  overflow: hidden;  padding-right: 15px;  text-align: right;}
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-12 head">
+		<img src="images/logo6.PNG" style="height:45px;margin:10px 0;"> 
+		<a data-toggle="modal" data-target="#help">
+			<img src="images/go.gif" style="float:right;height:50px;margin:10px 40px 0 auto;"/>
+		</a>
+	</div>
+	<div class="modal fade bs-example-modal-lg" id="help" tabindex="-1" role="dialog" aria-labelledby="hLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		  <div class="modal-header"><img src="images/go.gif" style="height:40px;float:left;"/>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="hLabel">《飞行员的自我修养手册》</h4>
+		  </div>
+		  <div class="modal-body">
+		  	<h4>一. 驾驶界面介绍</h4>
+		  	<ul class="hpl" >
+		  		<li>界面右上角是一个摇摆的狗子，点击它查看本说明手册。</li>
+		  		<li>主界面左侧边栏为飞机的实时导航数据。包括<span>【加速度计】</span>，<span>【导航传感器】</span>，<span>【定位传感器】</span>。</li>
+		  		<li>主界面右侧边栏为<span>【命令行控制】</span>功能。默认为聊天模式，你可以和这个飞机的其他控制人愉快的BB。输入<span>【cmd】</span>进入飞行控制模式，你输入的内容会作为飞机的控制指令执行。输入<span>【sh】</span>进入系统命令行模式，你的输入将作为控制系统上的 bash 命令解释执行。输入<span>【exit】</span>退出当前模式，回到聊天模式。</li>
+		  		<li>主界面中间部分有三个操作杆。<span>【左翼】</span>操纵杆控制飞机左翼的副翼，快捷键<span>【S】</span>向上升起，快捷键<span>【A】</span>向下降。<span>【右翼】</span>操纵杆控制飞机右翼的副翼，快捷键<span>【O】</span>向上升起，快捷键<span>【P】</span>向下降。<span>【尾翼】</span>操纵杆控制飞机尾翼的副翼，快捷键<span>【C】</span>向左偏，快捷键<span>【J】</span>向右偏。</li>
+		  		<li>主界面中间仪表盘上方第一个开关为引擎启动开关：<span>【Max】</span> 引擎开最大，<span>【Min】</span>引擎开最小。其他开关暂未使用</li>
+		  		<li>主界面中间第一行的三个小仪表从左到右依次为航向罗盘，飞机俯仰角，飞机侧倾斜角，这些仪表需要连接导航设备才有读数。</li>
+		  		<li>主界面中间第二行两个大仪表分别显示左右两个引擎的油门大小。</li>
+		  	</ul>
+			<h4>二. 发动飞机引擎</h4>
+		  	<ul class="hpl">
+		  		<li>引擎启动开关开启（主界面中间仪表盘上方第二个开关）显示<span>【Max】</span>，此时两个引擎油门仪表均指向做大值100。</li>
+		  		<li>接通引擎电源，引擎会发出“滴滴”两声蜂鸣，关闭引擎启动开关，显示<span>【Min】</span>，此时两个引擎油门仪表均指向最小值0。</li>
+		  		<li>引擎会继续发出蜂鸣声，“滴滴”表示引擎电源为7V (2S)，“滴滴滴”表示引擎电源为11.1V (3S)。</li>
+		  		<li>引擎已经发动，这时可以控制油门和机翼操纵杆准备飞行。</li>
+		  	</ul>
+		  	<h4>三. 飞机控制按键列表</h4>
+			<table class="table table-striped table-responsive">
+				<thead>
+					<tr><th>操作</th><th>快捷键</th><th> </th><th>操作</th><th>快捷键</th> </tr>
+				</thead>
+				<tbody>
+					<tr><td>左翼升</td><td>S</td><td> </td> <td>左翼降</td><td>A</td></tr>
+					<tr><td>右翼升</td><td>O</td><td> </td> <td>右翼降</td><td>P</td></tr>
+					<tr><td>尾翼左</td><td>C</td><td> </td> <td>尾翼右</td><td>J</td></tr>
+					<tr><td>油门升</td><td>U</td><td> </td> <td>油门降</td><td>D</td></tr>
+				</tbody>
+			</table>
+			<h4>四. <span>【命令行控制】</span>功能命令列表。</h4>
+			<table class="table table-striped table-responsive">
+				<thead>
+					<tr><th>命令</th><th>参数</th><th> </th><th>含义</th><th></th> </tr>
+				</thead>
+				<tbody>
+					<tr><td>mod</td><td></td><td> </td> <td>显示当前模式。</td><td></td></tr>
+					<tr><td>tk</td><td></td><td> </td> <td>进入聊天模式。</td><td></td></tr>
+					<tr><td>sh</td><td></td><td> </td> <td>进入系统命令模式。</td><td></td></tr>
+					<tr><td>cmd</td><td></td><td> </td> <td>进入飞行命令模式。</td><td></td></tr>
+					<tr><td>exit</td><td></td><td> </td> <td>退出当前模式,返回聊天模式。</td><td></td></tr>
+					<tr><td>go</td><td>[lat= ,lng= | mk:{n} | {name} ]</td><td> </td> <td>起航，参数可以是经纬度，或者缓存的坐标。</td><td></td></tr>
+					<tr><td>mk</td><td>[name]</td><td> </td> <td>缓存当前经纬度和海拔高度作为坐标，参数为坐标名。</td><td></td></tr>
+					<tr><td>ms</td><td></td><td> </td> <td>显示已缓存经纬度,海拔高度,及其坐标名或序号。</td><td></td></tr>
+				</tbody>
+			</table>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-success" data-dismiss="modal">我知道了！</button>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="col-md-2 col-sm-6">
+		<ul class="dhl">
+			<li class="tag">加速度计</li>
+			<li>xforce：<span id='xforce'></span> </li>
+			<li>yforce：<span id='yforce'></span> </li>
+			<li>zforce：<span id='zforce'></span> </li>
+			
+			<li class="tag">导航传感器</li>
+			<li>航向：<span id='azimuth'></span> </li>
+			<li>俯仰角：<span id='pitch'></span> </li>
+			<li>倾斜角：<span id='roll'></span> </li>
+			
+			<li class="tag"><b id='provider'></b> 定位传感器</li>
+			<li>海拔：<span id='altitude'></span> </li>
+			<li>纬度：<span id='latitude'></span> </li>
+			<li>经度：<span id='longitude'></span> </li>
+			<li>GPS 时钟：<span id='time'></span> </li>
+			<li>方向角：<span id='bearing'></span> </li>
+			<li>速度：<span id='speed'></span> </li>		
+		</ul> 
+	</div>
+	<div class="col-md-2 col-sm-6 ct" ><canvas id="lw"></canvas></div>
+	<div class="col-md-4 col-sm-12 ct">
+		<div class="row">
+			<div class="col-md-12 swt"> 
+			<ul class="state">
+			<li><input type="checkbox" class="tooltip-right" id="swt" data-size="small" data-on-color="primary" data-off-color="success" data-on-text="Max" data-off-text="Min" name="sw" title="引擎启动开关 Max 100% Min 0% 油门"></li>
+			<li><input type="checkbox" class="tooltip-right" id="swi" data-label-text="Min" data-size="small" data-on-color="success" data-off-color="warning" data-on-text="开" data-off-text="关" name="sw" ></li>
+			<li><input type="checkbox" class="tooltip-bottom" id="sw2" data-label-text="NULL" data-size="small" data-on-color="success" data-off-color="warning" data-on-text="开" data-off-text="关" name="sw" ></li>
+			<li><input type="checkbox" class="tooltip-bottom" id="sw3" data-label-text="NULL" data-size="small" data-on-color="success" data-off-color="warning" data-on-text="开" data-off-text="关" name="sw" ></li>
+			</ul>
+			</div>
+			<div class="col-md-4 az"><canvas id="az"></canvas></div>
+			<div class="col-md-4 "><canvas id="pt"></canvas></div>
+			<div class="col-md-4 "><canvas id="rl"></canvas></div>
+			<div class="col-md-6 lt"><canvas id="lt"></canvas></div>
+			<div class="col-md-6 "><canvas id="rt"></canvas></div>
+			<div class="col-md-12 wd"><canvas id="wd"></canvas></div>
+		</div>
+	</div>
+	<div class="col-md-2 col-sm-6 ct"><canvas id="rw"></canvas></div>
+	<div class="col-md-2 col-sm-6">
+		  <p class="tag"> 命令行控制</p>
+		  <div class="form-group input-group">
+			  <input type="text" class="form-control name" placeholder="输入你的角色名">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default ok" type="button">OK!</button>
+		      </span>
+		  </div>
+		  <div class="form-group input-group">
+			  <input type="text" id="cmds" class="form-control">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button" id="go">Go!</button>
+		      </span>
+		  </div>
+		  <div class="form-group">
+		    <!--textarea id="disp" class="form-control" rows="8"></textarea-->
+			<div class="chatArea">
+				<ul class="messages"></ul>
+			</div>
+		  </div>
+	</div>
+</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.hotkeys.js"></script>
+<script src="js/gauge.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-switch.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="bone.js"></script>
+</body>
+</html>
