@@ -24,9 +24,7 @@ var exec = require('child_process').exec;
 app.use(express.static('./public'));
 var numUsers = 0;
 io.on('connection', function(socket){
-	
 	var addedUser = false;
-	
 	socket.on('tt', function(msg){
 		var cv=10*parseInt(msg)+1000;
 		t1.servoWrite(cv);

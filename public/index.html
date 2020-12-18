@@ -43,7 +43,7 @@ span{font-weight: 700;color:green;font-size:13px;}
 		  	<h4>一. 驾驶界面介绍</h4>
 		  	<ul class="hpl" >
 		  		<li>界面右上角是一个摇摆的狗子，点击它查看本说明手册。</li>
-		  		<li>主界面左侧边栏为飞机的实时导航数据。包括<span>【加速度计】</span>，<span>【导航传感器】</span>，<span>【定位传感器】</span>。</li>
+		  		<li>主界面左侧边栏为飞机的实时导航数据。包括<span>【加速度计】</span>，<span>【导航传感器】</span>，<span>【姿态传感器】</span>。</li>
 		  		<li>主界面右侧边栏为<span>【命令行控制】</span>功能。默认为聊天模式，你可以和这个飞机的其他控制人愉快的BB。输入<span>【cmd】</span>进入飞行控制模式，你输入的内容会作为飞机的控制指令执行。输入<span>【sh】</span>进入系统命令行模式，你的输入将作为控制系统上的 bash 命令解释执行。输入<span>【exit】</span>退出当前模式，回到聊天模式。</li>
 		  		<li>主界面中间部分有三个操作杆。<span>【左翼】</span>操纵杆控制飞机左翼的副翼，快捷键<span>【S】</span>向上升起，快捷键<span>【A】</span>向下降。<span>【右翼】</span>操纵杆控制飞机右翼的副翼，快捷键<span>【O】</span>向上升起，快捷键<span>【P】</span>向下降。<span>【尾翼】</span>操纵杆控制飞机尾翼的副翼，快捷键<span>【C】</span>向左偏，快捷键<span>【J】</span>向右偏。</li>
 		  		<li>主界面中间仪表盘上方第一个开关为引擎启动开关：<span>【Max】</span> 引擎开最大，<span>【Min】</span>引擎开最小。其他开关暂未使用</li>
@@ -99,12 +99,12 @@ span{font-weight: 700;color:green;font-size:13px;}
 			<li>yforce：<span id='yforce'></span> </li>
 			<li>zforce：<span id='zforce'></span> </li>
 			
-			<li class="tag">导航传感器</li>
+			<li class="tag">姿态传感器</li>
 			<li>航向：<span id='azimuth'></span> </li>
 			<li>俯仰角：<span id='pitch'></span> </li>
 			<li>倾斜角：<span id='roll'></span> </li>
 			
-			<li class="tag"><b id='provider'></b> 定位传感器</li>
+			<li class="tag"><b id='provider'></b>导航传感器</li>
 			<li>海拔：<span id='altitude'></span> </li>
 			<li>纬度：<span id='latitude'></span> </li>
 			<li>经度：<span id='longitude'></span> </li>
